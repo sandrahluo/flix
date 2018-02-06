@@ -11,6 +11,8 @@ import AlamofireImage
 
 class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var tableView: UITableView!
     // array of dictionaries initialized as empty
     var movies:[[String:Any]] = []
@@ -19,6 +21,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityIndicator.startAnimating()
+        activityIndicator.stopAnimating()
         
         //functionality to detect pulling to refresh
         refreshControl = UIRefreshControl()
@@ -94,16 +99,5 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
