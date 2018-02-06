@@ -29,7 +29,7 @@ The following **additional** user stories are implemented:
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. URL requests + cache
-2.
+2. Meaning of "!" and when it should be used in Swift
 
 ## Video Walkthrough
 
@@ -41,7 +41,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Learned a lot about iOS structure and network requests through the tutorials for this app.
+Struggled with some minor Swift technicalities, fixed through double checking code from tutorial and discussion forum.
 
 ## License
 
