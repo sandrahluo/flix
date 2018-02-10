@@ -93,7 +93,19 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
-    
+    // gets called everytime a segue from a viewController gets initiated
+    // sender is the segue initiator
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // cell that was selected initiates the segue
+        let cell = sender as! UITableViewCell
+        if let indexPath = tableView.indexPath(for: cell) {
+            // indexPath has index and row
+            let movie = movies[indexPath.row]
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.movie = movie
+        }
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
