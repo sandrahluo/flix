@@ -71,20 +71,23 @@ class SuperheroViewController: UIViewController, UICollectionViewDataSource {
         task.resume()
     }
     
+    // segues define a transition between two ViewControllers
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // starting point of segue is what initiates the segue
+        let cell = sender as! UICollectionViewCell
+        if let indexPath = collectionView.indexPath(for: cell) {
+            let movie = movies[indexPath.row]
+            // end point of segue is the viewController we want to move to
+            let detailViewController = segue.destination as! SuperheroDetailViewController
+            detailViewController.movie = movie
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
