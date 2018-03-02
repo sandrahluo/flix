@@ -16,6 +16,8 @@
 		DA0935B4203290F4004CA841 /* SuperheroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0935B3203290F4004CA841 /* SuperheroViewController.swift */; };
 		DA0935B82032984B004CA841 /* PosterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0935B72032984B004CA841 /* PosterCell.swift */; };
 		DA0935BA2032C221004CA841 /* SuperheroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0935B92032C221004CA841 /* SuperheroDetailViewController.swift */; };
+		DA552D3C2048D7440041D05A /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA552D3B2048D7440041D05A /* Movie.swift */; };
+		DA552D3E2048FDBC0041D05A /* MovieAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA552D3D2048FDBC0041D05A /* MovieAPIManager.swift */; };
 		DA6C0F0C2021544F008136AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C0F0B2021544F008136AC /* AppDelegate.swift */; };
 		DA6C0F112021544F008136AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA6C0F0F2021544F008136AC /* Main.storyboard */; };
 		DA6C0F132021544F008136AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA6C0F122021544F008136AC /* Assets.xcassets */; };
@@ -57,6 +59,8 @@
 		DA0935B3203290F4004CA841 /* SuperheroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroViewController.swift; sourceTree = "<group>"; };
 		DA0935B72032984B004CA841 /* PosterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCell.swift; sourceTree = "<group>"; };
 		DA0935B92032C221004CA841 /* SuperheroDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperheroDetailViewController.swift; sourceTree = "<group>"; };
+		DA552D3B2048D7440041D05A /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		DA552D3D2048FDBC0041D05A /* MovieAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPIManager.swift; sourceTree = "<group>"; };
 		DA6C0F082021544F008136AC /* flix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6C0F0B2021544F008136AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA6C0F102021544F008136AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -125,10 +129,12 @@
 		DA0935AD202A8F36004CA841 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DA552D3B2048D7440041D05A /* Movie.swift */,
 				DA0935A520291EC9004CA841 /* NowPlayingViewController.swift */,
 				DA0935AF202A8FC9004CA841 /* DetailViewController.swift */,
 				DA0935B3203290F4004CA841 /* SuperheroViewController.swift */,
 				DA0935B92032C221004CA841 /* SuperheroDetailViewController.swift */,
+				DA552D3D2048FDBC0041D05A /* MovieAPIManager.swift */,
 			);
 			name = ViewControllers;
 			path = "New Group";
@@ -495,9 +501,11 @@
 				DA0935B4203290F4004CA841 /* SuperheroViewController.swift in Sources */,
 				DA0935A620291EC9004CA841 /* NowPlayingViewController.swift in Sources */,
 				DA0935B82032984B004CA841 /* PosterCell.swift in Sources */,
+				DA552D3E2048FDBC0041D05A /* MovieAPIManager.swift in Sources */,
 				DA0935BA2032C221004CA841 /* SuperheroDetailViewController.swift in Sources */,
 				DA6C0F0C2021544F008136AC /* AppDelegate.swift in Sources */,
 				DA0935A820294E2F004CA841 /* MovieCell.swift in Sources */,
+				DA552D3C2048D7440041D05A /* Movie.swift in Sources */,
 				DA0935B0202A8FC9004CA841 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,24 +24,22 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var overviewLabel: UILabel!
     
     // question mark denotes "optional" in case there isn't a movie
-    var movie: [String:Any]?
+    var movie: Movie?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let movie = movie {
             
-            titleLabel.text = movie[MovieKeys.title] as? String
-            releaseDateLabel.text = movie[MovieKeys.releaseDatePath] as? String
-            overviewLabel.text = movie[MovieKeys.overviewPath] as? String
-            let backDropPathString = movie[MovieKeys.backDropPath] as! String
-            let posterPathString = movie[MovieKeys.posterPath] as! String
-            
-            let backDropURL = URL(string: MovieKeys.baseURLString + backDropPathString)!
-            backdropImageView.af_setImage(withURL: backDropURL)
-            
-            let posterPathURL = URL(string: MovieKeys.baseURLString + posterPathString)!
-            posterImageView.af_setImage(withURL: posterPathURL)
+            titleLabel.text = movie.title
+            releaseDateLabel.text = movie.releaseDate
+            overviewLabel.text = movie.overview
+            if movie.posterURL != nil {
+                backdropImageView.af_setImage(withURL: movie.backdropURL!)
+            }
+            if movie.posterURL != nil {
+                posterImageView.af_setImage(withURL: movie.posterURL!)
+            }
         }
     }
 

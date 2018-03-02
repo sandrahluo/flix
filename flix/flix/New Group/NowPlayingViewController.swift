@@ -15,15 +15,13 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     // array of dictionaries initialized as empty
-    var movies:[[String:Any]] = []
+    var movies:[Movie] = []
     // want refreshControl to be accessible by multiple functions
     var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         activityIndicator.startAnimating()
-        activityIndicator.stopAnimating()
         
         //functionality to detect pulling to refresh
         refreshControl = UIRefreshControl()
@@ -35,36 +33,22 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         tableView.dataSource = self
         self.tableView.rowHeight = 200
         fetchMovies()
+        activityIndicator.stopAnimating()
     }
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
-
         fetchMovies()
     }
     
     func fetchMovies() {
-        //url for the endpoint
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
-        //cache policy: our network will always reload from the network even if there is data in cache, for testing purposes
-        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        //when our network request returns, it will jump back on our main thread
-        let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
-        let task = session.dataTask(with: request) { (data, response, error) in
-            //this will run when the network request returns
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            else if let data = data {
-                //String keys and values can be anything
-                let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                let movies = dataDictionary["results"] as! [[String: Any]]
-                self.movies = movies
+        MovieAPIManager().nowPlayingMovies{ (movies: [Movie]?, error: Error?) in
+            if let movies = movies {
+            self.movies = movies
                 //update the UI now that we've got info back from network request
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
             }
         }
-        task.resume()
     }
     
     // indicate how many cells
@@ -77,19 +61,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         
         //casting UITableViewCell as MovieCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
-        
-        //indexpath is called everytime we make a new cell; get info from json
-        let movie = movies[indexPath.row]
-        let title = movie["title"] as! String
-        let overview = movie["overview"] as! String
-        cell.titleLabel.text = title
-        cell.overviewLabel.text = overview
-        
-        let posterPathString = movie["poster_path"] as! String
-        let baseURLString = "https://image.tmdb.org/t/p/w500"
-        let posterURL = URL(string: baseURLString + posterPathString)!
-        cell.posterImageView.af_setImage(withURL: posterURL)
-        
+        cell.movie = movies[indexPath.row]
         return cell
     }
     
